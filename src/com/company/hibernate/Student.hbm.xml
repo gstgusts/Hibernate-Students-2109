@@ -13,10 +13,32 @@
         <id name = "id" type = "int" column = "id">
             <generator class="native"/>
         </id>
+        
+        <set name="grades" cascade="all" fetch="join">
+            <key column="student_id"></key>
+            <one-to-many class="com.company.Grade"></one-to-many>
+        </set>
 
         <property name = "name" column = "name" type = "string"/>
         <property name = "surname" column = "surname" type = "string"/>
         <property name = "code" column = "code" type = "string"/>
 
     </class>
+
+    <class name = "com.company.Grade" table = "GRADES">
+
+        <meta attribute = "class-description">
+            This class contains the grade detail.
+        </meta>
+
+        <id name = "id" type = "int" column = "id">
+            <generator class="native"/>
+        </id>
+
+        <property name = "grade" column = "grade" type = "short"/>
+        <property name = "subjectId" column = "subject_id" type = "int"/>
+
+    </class>
+
+
 </hibernate-mapping>

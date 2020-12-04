@@ -3,19 +3,17 @@ package com.company;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
-    private int id;
+public class SmallStudent {
     private String name;
     private String surname;
-    private String code;
-    @ToString.Exclude
-    private Set grades = new HashSet();
+
+    public SmallStudent(Object obj) {
+        var arr = (Object[])obj;
+        name = (String)arr[0];
+        surname = (String)arr[1];
+    }
 }

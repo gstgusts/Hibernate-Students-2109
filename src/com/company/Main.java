@@ -1,26 +1,30 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Main {
 
     public static void main(String[] args) {
         var repo = new StudentsRepository();
 
-        //var stud1 = new Student(0, "Jānis", "Ozols","222");
+        var list = repo.getList();
 
-        //var newId = repo.add(stud1);
-
-        var stud2 = new Student(1, "Augusts3", "Lin3","1113");
-
-        repo.update(stud2);
-
-        for (var student : repo.getList()) {
+        for (var student: list) {
             System.out.println(student);
         }
 
-        var stud3 = repo.getById(2);
+        var grades = new HashSet<Grade>();
+        grades.add(new Grade(0,(short)4, 1));
+        grades.add(new Grade(0,(short)9, 2));
 
-        System.out.println(stud3);
+        var st1 = repo.getById(2);
 
-        repo.delete(1);
+        st1.setGrades(grades);
+
+        repo.update(st1);
+
     }
 }
